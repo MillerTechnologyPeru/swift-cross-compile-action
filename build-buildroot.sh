@@ -14,8 +14,8 @@ mkdir -p ./downloads
 BUILDROOT_DOWNLOAD_FILE=./downloads/buildroot.zip
 BUILDROOT_SRCDIR=./buildroot-${SWIFT_ARCH}
 BUILDROOT_SRCURL=https://github.com/MillerTechnologyPeru/buildroot/archive/refs/heads/2022.02-swift.zip
-if test -f "$BUILDROOT_DOWNLOAD_FILE"; then
-    echo "$BUILDROOT_DOWNLOAD_FILE exists"
+if test -f "$BUILDROOT_SRCDIR"; then
+    echo "$BUILDROOT_SRCDIR exists"
 else
     echo "Download Buildroot"
     wget $BUILDROOT_SRCURL -O $BUILDROOT_DOWNLOAD_FILE
@@ -23,8 +23,8 @@ else
     echo "Extract Buildroot"
     cd ./downloads
     unzip ./buildroot.zip
-    mv ./buildroot-2022.02-swift-wip ../buildroot-${SWIFT_ARCH}
     cd ../
+    mv ./downloads/buildroot-2022.02-swift $BUILDROOT_SRCDIR
 fi
 
 # configure buildroot
