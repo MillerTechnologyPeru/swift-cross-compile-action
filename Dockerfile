@@ -4,6 +4,7 @@ FROM swift:5.6.1-focal
 RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true && apt-get -q update && \
     apt-get -q install -y \
     llvm-12-dev \
+    ninja-build \
     wget \
     build-essential \
     bash \
@@ -55,5 +56,7 @@ RUN set -e; \
 # Modify LLVM headers
 RUN cp /usr/lib/llvm-12/include/llvm/Config/llvm-config.h /usr/lib/llvm-12/include/llvm/Config/config.h
 
-# Build Buildroot and Swift package
+# Build Buildroot
 COPY . .
+
+RUN ./build-buildroot.sh
