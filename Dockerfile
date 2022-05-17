@@ -43,16 +43,17 @@ RUN set -e; \
             ;; \
         *) echo >&2 "error: unsupported architecture: '$ARCH_NAME'"; exit 1 ;; \
     esac; \
-    wget "https://github.com/Kitware/CMake/releases/download/v3.22.4/cmake-3.22.4-linux$OS_ARCH_SUFFIX.tar.gz"; \
-    tar -xf "cmake-3.22.4-linux$OS_ARCH_SUFFIX.tar.gz"; \
-    rm -rf "cmake-3.22.4-linux$OS_ARCH_SUFFIX.tar.gz"; \
-    rm -rf "cmake-3.22.4-linux$OS_ARCH_SUFFIX/man"; \
-    cp -rf "cmake-3.22.4-linux$OS_ARCH_SUFFIX/*" /usr/local/; \
-    rm -rf "cmake-3.22.4-linux$OS_ARCH_SUFFIX"; \
+    export CMAKE_VERSION="cmake-3.22.4-linux$OS_ARCH_SUFFIX"; \
+    cd /tmp; \
+    wget "https://github.com/Kitware/CMake/releases/download/v3.22.4/$CMAKE_VERSION.tar.gz"; \
+    tar -xf $CMAKE_VERSION.tar.gz; \
+    rm -rf $CMAKE_VERSION.tar.gz; \
+    rm -rf $CMAKE_VERSION/man; \
+    cp -rf $CMAKE_VERSION/* /usr/local/; \
+    rm -rf $CMAKE_VERSION;
 
 # Modify LLVM headers
 RUN cp /usr/lib/llvm-12/include/llvm/Config/llvm-config.h /usr/lib/llvm-12/include/llvm/Config/config.h
 
 # Build Buildroot and Swift package
-
 COPY . .
