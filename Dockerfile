@@ -5,6 +5,7 @@ RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true && ap
     apt-get -q install -y \
     llvm-12-dev \
     ninja-build \
+    qemu-user-static \
     wget \
     build-essential \
     bash \
