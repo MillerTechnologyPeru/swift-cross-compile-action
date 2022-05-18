@@ -20,4 +20,5 @@ swift build --package-path ${SWIFT_PACKAGE_PATH} \
     -c ${SWIFT_BUILD_MODE} \
     -Xswiftc -enable-testing \
     --destination ${SWIFT_DESTINATION_FILE} \
- #   --build-tests \
+    --build-tests \
+    -Xswiftc -enable-testing \
