@@ -22,3 +22,9 @@ swift build --package-path ${SWIFT_PACKAGE_PATH} \
     --destination ${SWIFT_DESTINATION_FILE} \
     --build-tests \
     -Xswiftc -enable-testing \
+
+# Copy unit tests
+cp ${SWIFT_PACKAGE_PATH}/.build/${SWIFT_BUILD_MODE}/*.xctest ${BUILDROOT_SRCDIR}/output/target/usr/bin/
+
+# Copy QEMU
+cp -rf /usr/bin/qemu-arm-static ${BUILDROOT_SRCDIR}/output/target/usr/bin/
