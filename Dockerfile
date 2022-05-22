@@ -60,4 +60,4 @@ RUN cp /usr/lib/llvm-12/include/llvm/Config/llvm-config.h /usr/lib/llvm-12/inclu
 # Build Buildroot
 COPY . .
 
-RUN ./build-buildroot.sh
+# RUN ./build-buildroot.sh
