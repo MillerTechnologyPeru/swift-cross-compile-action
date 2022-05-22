@@ -4,7 +4,6 @@
 SWIFT_ARCH="${SWIFT_ARCH:=armv7}"
 
 echo "Building Swift for ${SWIFT_ARCH}"
-echo "Swift Package ${SWIFT_PACKAGE_PATH} in ${SWIFT_BUILD_MODE} mode"
 
 # exit for failures
 set -e
