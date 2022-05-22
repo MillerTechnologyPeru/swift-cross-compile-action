@@ -1,0 +1,24 @@
+name: Buildroot
+
+on: [push, workflow_dispatch]
+
+jobs:
+
+    buildroot-armv7:
+        name: Armv7
+        runs-on: ubuntu-20.04
+        container: colemancda/swift-buildroot:amd64
+        steps:
+        - name: Checkout
+          uses: actions/checkout@v3
+        - name: Swift Version
+          run: swift --version
+        - name: Build
+          run: |
+            export SWIFT_ARCH=armv7
+            ./build-buildroot.sh
+        - name: Archive Build artifacts
+          uses: actions/upload-artifact@v3
+          with:
+            name: rootfs-armv7
+            path: ./output/images/rootfs.tar
