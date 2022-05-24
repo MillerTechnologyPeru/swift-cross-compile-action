@@ -15,7 +15,7 @@ HOST_SWIFT_SUPPORT_DIR="${BUILDROOT_SRCDIR}/output/host/usr/share/swift"
 SWIFT_BIN="${HOST_SWIFT_SUPPORT_DIR}/bin/swift"
 SWIFT_DESTINATION_FILE="${HOST_SWIFT_SUPPORT_DIR}/toolchain.json"
 
-swift build --package-path ${SWIFT_PACKAGE_PATH} \
+$SWIFT_BIN build --package-path ${SWIFT_PACKAGE_PATH} \
     --build-path ${SWIFT_PACKAGE_PATH}/.build \
     -c ${SWIFT_BUILD_MODE} \
     -Xswiftc -enable-testing \
@@ -26,5 +26,8 @@ swift build --package-path ${SWIFT_PACKAGE_PATH} \
 # Copy unit tests
 cp ${SWIFT_PACKAGE_PATH}/.build/${SWIFT_BUILD_MODE}/*.xctest ${BUILDROOT_SRCDIR}/output/target/usr/bin/
 
-# Copy QEMU
-cp -rf /usr/bin/qemu-arm-static ${BUILDROOT_SRCDIR}/output/target/usr/bin/
+# Rebuild Buildroot
+cd $BUILDROOT_SRCDIR
+echo "Build Buildroot"
+make
+cd ../
