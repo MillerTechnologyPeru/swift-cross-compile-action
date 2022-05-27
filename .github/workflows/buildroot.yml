@@ -7,7 +7,7 @@ jobs:
     buildroot-armv7:
         name: Armv7
         runs-on: ubuntu-20.04
-        container: colemancda/swift-buildroot:amd64
+        container: colemancda/swift-buildroot:latest
         steps:
         - name: Checkout
           uses: actions/checkout@v3
