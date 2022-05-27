@@ -13,7 +13,7 @@ mkdir -p ./downloads
 BUILDROOT_DOWNLOAD_FILE=./downloads/buildroot.zip
 BUILDROOT_SRCDIR=./buildroot-${SWIFT_ARCH}
 BUILDROOT_SRCURL=https://github.com/MillerTechnologyPeru/buildroot/archive/refs/heads/2022.02-swift.zip
-if test -f "$BUILDROOT_SRCDIR"; then
+if test -f "$BUILDROOT_SRCDIR/.config"; then
     echo "$BUILDROOT_SRCDIR exists"
 else
     echo "Download Buildroot"
